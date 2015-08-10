@@ -1,0 +1,123 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>By div elements</title>
+<style type="text/css">
+.car {
+		text-align: left;
+	width: 298px;
+	height: 30px;
+	border: 1px solid #000;
+	}
+</style>
+<style type="text/css">
+.Table {
+	display: table;
+}
+.Title {
+	display: table-caption;
+	text-align: center;
+	font-weight: bold;
+	font-size: larger;
+}
+.Heading {
+	display: table-row;
+	font-weight: bold;
+	text-align: center;
+}
+.Row {
+	display: table-row;
+}
+.Cell {
+	display: table-cell;
+	border: solid;
+	border-width: thin;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+</style>
+<script>
+var newElement;
+	var Employee = [ {
+		eId : 1,
+		empName : "Anees",
+		empSal : 10000
+	}, {
+		eId : 2,
+		empName : "Ashiq",
+		empSal : 15000
+
+	}, {
+		eId : 3,
+		empName : "Sidhiq",
+		empSal : 20000
+	}, {
+		eId : 4,
+		empName : "midhu",
+		empSal : 18000
+	}, {
+		eId : 5,
+		empName : "sulfi",
+		empSal : 25000
+	} ];
+	function myFunction() {
+		for ( var index in Employee) {
+			 newElement = document.createElement('div');
+			newElement.id = Employee[index].eId;
+			newElement.className = "car";
+			var w = document.createElement("BUTTON");
+			var m = document.createTextNode("delete");
+			w.appendChild(m);
+			newElement.innerHTML += "&nbsp&nbsp" + Employee[index].eId
+					+ " &nbsp&nbsp&nbsp&nbsp&nbsp " + Employee[index].empName
+					+ "&nbsp&nbsp" + Employee[index].empSal
+					+ "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"
+					+ '<button onclick="myFunction2(' + Employee[index].eId
+					+ ')" id="' + Employee[index].eId + '" name="deletebtn">DELETE</button>';
+			document.body.appendChild(newElement); 
+				}
+			}
+	function myFunction2(id) {
+			for ( var i = 0; i < Employee.length; i++) {
+			delete Employee[id - 1].eId;
+			delete Employee[id - 1].empName;
+			delete Employee[id - 1].empSal;
+			document.getElementById(id).style.visibility = 'hidden';			
+		}
+			}
+		function myFunction3() {
+				Employee.push({eId : 6,	empName : "robin",empSal : 25000},
+						{eId : 7,empName : "sameer",empSal : 8000});
+				myFunction();
+		}
+	function myFunction4() {
+		document.getElementById("newElement").style.visibility = 'hidden';
+		}
+</script>
+</head>
+<body>
+	<button id="showButton" onclick="myFunction()">Show data</button>
+	<button id="addButton" onclick="myFunction3()">Add Data</button>
+	<div class="Table">
+		<div class="Title">
+			<p>Employee Details</p>
+		</div>
+		<div class="Heading">
+			<div class="Cell">
+				<p>ID</p>
+			</div>
+			<div class="Cell">
+				<p>NAME</p>
+			</div>
+			<div class="Cell">
+				<p>SALARY</p>
+			</div>
+			<div class="Cell">
+				<p>FUNCTION</p>
+			</div>
+		</div>
+	</div>
+	</body>
+</html>
+//ghghjghgh
